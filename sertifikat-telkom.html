@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080D18">
+
+    <title>Sertifikat Magang Telkom | Almer</title>
+
+    <style>
+        :root {
+            --bg: #080D18;
+            --surface: #0E1625;
+            --border: #263248;
+            --text: #E8EDF7;
+            --muted: #9AA9C1;
+            --accent: #70D6E8;
+            --violet: #A99BFF;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .topbar {
+            padding: 17px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            background: #0A111F;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand {
+            color: var(--accent);
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .topbar-label {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .container {
+            width: min(1100px, 92%);
+            margin: auto;
+            padding: 30px 0 60px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 28px;
+            color: var(--accent);
+        }
+
+        .back-link:hover {
+            color: var(--violet);
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        h1 {
+            margin: 10px 0;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            line-height: 1.2;
+        }
+
+        .description {
+            max-width: 750px;
+            color: var(--muted);
+        }
+
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            margin: 24px 0 16px;
+        }
+
+        .tool-button,
+        .original-link {
+            padding: 9px 14px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            background: var(--surface);
+            color: var(--text);
+            font: inherit;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .tool-button:hover,
+        .original-link:hover {
+            border-color: var(--accent);
+        }
+
+        .tool-button:focus-visible,
+        .original-link:focus-visible {
+            outline: 2px solid var(--violet);
+            outline-offset: 3px;
+        }
+
+        .zoom-level {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-left: auto;
+        }
+
+        .viewer {
+            overflow: auto;
+            padding: 20px;
+            background: #05080F;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .certificate-image {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+        }
+
+        .help-text {
+            margin-top: 14px;
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        footer {
+            padding: 24px;
+            text-align: center;
+            color: #77869E;
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 600px) {
+            .topbar-label {
+                font-size: 0.68rem;
+                text-align: right;
+            }
+
+            .viewer {
+                padding: 8px;
+            }
+
+            .zoom-level {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="topbar">
+        <a href="index.html" class="brand">A.</a>
+        <span class="topbar-label">CERTIFICATE VIEWER</span>
+    </nav>
+
+    <main class="container">
+
+        <a href="index.html#experience" class="back-link">
+            &larr; Kembali ke Pengalaman
+        </a>
+
+        <header>
+            <div class="eyebrow">Certificate 01 / Internship</div>
+
+            <h1>Sertifikat Magang PT Telkom Indonesia</h1>
+
+            <p class="description">
+                Dokumentasi sertifikat praktik kerja lapangan.
+                Gunakan kontrol di bawah untuk memperbesar gambar
+                dan membaca detail sertifikat.
+            </p>
+        </header>
+
+        <div class="toolbar" aria-label="Kontrol tampilan sertifikat">
+            <button type="button" class="tool-button" id="zoom-out">
+                − Perkecil
+            </button>
+
+            <button type="button" class="tool-button" id="zoom-reset">
+                Reset
+            </button>
+
+            <button type="button" class="tool-button" id="zoom-in">
+                + Perbesar
+            </button>
+
+            <a
+                href="sertifikat-telkom.jpeg"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="original-link"
+            >
+                Buka Foto Asli &nearr;
+            </a>
+
+            <span class="zoom-level" id="zoom-level">Zoom: 100%</span>
+        </div>
+
+        <div class="viewer">
+            <img
+                id="certificate-image"
+                class="certificate-image"
+                src="sertifikat-telkom.jpeg"
+                alt="Sertifikat magang PT Telkom Indonesia"
+            >
+        </div>
+
+        <p class="help-text">
+            Jika tulisan belum terbaca, tekan Perbesar. Pada tampilan
+            zoom yang lebih tinggi, geser area gambar untuk melihat
+            bagian sertifikat yang lain.
+        </p>
+
+    </main>
+
+    <footer>
+        &copy; 2026 Almer Abrilgi Pandu Wahyanto.
+    </footer>
+
+    <script>
+        const certificateImage =
+            document.getElementById("certificate-image");
+
+        const zoomLevel =
+            document.getElementById("zoom-level");
+
+        const zoomInButton =
+            document.getElementById("zoom-in");
+
+        const zoomOutButton =
+            document.getElementById("zoom-out");
+
+        const zoomResetButton =
+            document.getElementById("zoom-reset");
+
+        let zoom = 1;
+
+        function updateZoom() {
+            certificateImage.style.width = `${zoom * 100}%`;
+            certificateImage.style.maxWidth = "none";
+            zoomLevel.textContent = `Zoom: ${Math.round(zoom * 100)}%`;
+
+            zoomOutButton.disabled = zoom <= 1;
+            zoomInButton.disabled = zoom >= 3;
+        }
+
+        zoomInButton.addEventListener("click", () => {
+            zoom = Math.min(3, zoom + 0.25);
+            updateZoom();
+        });
+
+        zoomOutButton.addEventListener("click", () => {
+            zoom = Math.max(1, zoom - 0.25);
+            updateZoom();
+        });
+
+        zoomResetButton.addEventListener("click", () => {
+            zoom = 1;
+            updateZoom();
+        });
+
+        updateZoom();
+
+        certificateImage.addEventListener("error", () => {
+            document.querySelector(".help-text").textContent =
+                "Gambar tidak ditemukan. Periksa nama file " +
+                "sertifikat-telkom.jpeg dan lokasi file tersebut.";
+        });
+    </script>
+
+</body>
+</html>

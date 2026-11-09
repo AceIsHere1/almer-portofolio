@@ -1,0 +1,406 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080D18">
+    <title>Almer Shooter Game | Almer Portfolio</title>
+
+    <style>
+        :root {
+            --bg: #080D18;
+            --surface: #0E1625;
+            --border: #263248;
+            --text: #E8EDF7;
+            --muted: #9AA9C1;
+            --accent: #70D6E8;
+            --violet: #A99BFF;
+        }
+
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        .topbar {
+            padding: 17px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            background: #0A111F;
+        }
+
+        .brand {
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--accent);
+        }
+
+        .brand span { color: var(--text); }
+        .topbar small { color: var(--muted); }
+
+        .container {
+            width: min(1000px, 90%);
+            margin: auto;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 30px 0;
+            color: var(--accent);
+        }
+
+        .back-link:hover,
+        .text-link:hover { color: var(--violet); }
+
+        .eyebrow {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: clamp(2.4rem, 6vw, 4rem);
+            line-height: 1.15;
+            margin: 12px 0;
+        }
+
+        h2 { font-size: 1.6rem; margin-top: 0; }
+        h3 { font-size: 1.05rem; margin-top: 0; }
+
+        .subtitle {
+            max-width: 750px;
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 22px 0;
+        }
+
+        .tag {
+            border: 1px solid #2B5265;
+            background: var(--surface);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .cover {
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            margin: 28px 0;
+            background: radial-gradient(ellipse at center, #1B3450, #111C2D 55%, #0A111F);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .cover img {
+            width: 100%;
+            max-height: 440px;
+            object-fit: cover;
+            display: block;
+            border-radius: 6px;
+        }
+
+        .placeholder {
+            color: var(--muted);
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
+        }
+
+        .section {
+            padding: 42px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-label {
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .description { color: #C1CDDE; }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .info-card {
+            padding: 22px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 7px;
+        }
+
+        .info-card p,
+        .info-card li { color: var(--muted); }
+
+        .info-card ul { padding-left: 20px; }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 15px;
+        }
+
+        .gallery figure { margin: 0; min-width: 0; }
+
+        .gallery img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .gallery .placeholder {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 12px;
+            background: var(--surface);
+            border: 1px dashed #3B4B64;
+            border-radius: 6px;
+            letter-spacing: 0;
+        }
+
+        figcaption {
+            font-size: 0.82rem;
+            color: var(--muted);
+            margin-top: 8px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 11px 18px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            margin: 5px 8px 5px 0;
+            transition: 0.2s;
+        }
+
+        .button-primary {
+            color: #08131F;
+            background: var(--accent);
+            border-color: var(--accent);
+            font-weight: 700;
+        }
+
+        .button:hover { border-color: var(--accent); }
+
+        .closing {
+            margin: 40px 0;
+            padding: 25px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 7px;
+        }
+
+        footer {
+            padding: 24px;
+            color: #77869E;
+            text-align: center;
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 650px) {
+            .info-grid, .gallery { grid-template-columns: 1fr; }
+            .gallery img, .gallery .placeholder { height: 210px; }
+            .cover { min-height: 220px; }
+            .topbar small { font-size: 0.7rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="topbar">
+        <a href="index.html" class="brand">A<span>.</span></a>
+        <small>GAME DEVELOPMENT PORTFOLIO</small>
+    </nav>
+
+    <main class="container">
+
+        <a href="index.html#games" class="back-link">
+            &larr; Kembali ke My Games
+        </a>
+
+        <header>
+            <div class="eyebrow">3D Game Prototype</div>
+            <h1>Almer Shooter Game</h1>
+
+            <p class="subtitle">
+                Prototipe game shooter 3D yang dikembangkan sebagai
+                bagian dari proses belajar pemrograman game dan
+                pengembangan gameplay.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Unity</span>
+                <span class="tag">3D</span>
+                <span class="tag">Shooter</span>
+                <span class="tag">Game Programming</span>
+            </div>
+        </header>
+
+            <div class="cover">
+            <img
+                src="Cover-Almer-Shooter.png"
+                alt="Cover Almer Shooter Game"
+            >
+             </div>
+
+        <section class="section">
+            <div class="section-label">01 / Overview</div>
+            <h2>Tentang Game</h2>
+
+            <p class="description">
+                Almer Shooter Game merupakan prototipe shooter 3D
+                yang dibuat dalam proses pembelajaran pengembangan
+                game. Proyek ini menjadi bagian dari latihan
+                menerapkan pemrograman ke dalam sebuah permainan
+                yang dapat dimainkan.
+            </p>
+
+            <p class="description">
+                Melalui halaman ini, saya mendokumentasikan proses
+                pengembangan, tampilan game, serta fitur yang
+                benar-benar tersedia pada prototipe.
+            </p>
+        </section>
+
+        <section class="section">
+            <div class="section-label">02 / Development</div>
+            <h2>Peran dan Teknologi</h2>
+
+            <div class="info-grid">
+                <article class="info-card">
+                    <h3>Peran</h3>
+                    <p>Game Programmer</p>
+                </article>
+
+                <article class="info-card">
+                    <h3>Teknologi</h3>
+                    <p>Unity dan C#.</p>
+                </article>
+
+                <article class="info-card">
+                    <h3>Fokus Proyek</h3>
+                    <p>
+                        Pengembangan prototipe shooter 3D sebagai
+                        latihan pemrograman dan pembuatan gameplay.
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <h3>Fitur Game</h3>
+                    <p>
+                        Tambahkan mekanik menembak, pergerakan pemain,
+                        sistem musuh, atau fitur lain sesuai
+                        implementasi yang tersedia pada game.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-label">03 / Screenshots</div>
+            <h2>Galeri Gameplay</h2>
+
+            <div class="gallery">
+
+        <figure>
+            <img
+            src="Gameplay1.png"
+            alt="Screenshot 1 Almer Shooter"
+            >
+            <figcaption>Tampilan lingkungan game</figcaption>
+        </figure>
+
+        <figure>
+            <img
+            src="Gameplay2.png"
+            alt="Screenshot 2 Almer Shooter"
+            >
+        <figcaption>Cuplikan gameplay</figcaption>
+        </figure>
+
+    <figure>
+        <img
+            src="Gameplay3.png"
+            alt="Screenshot 3 Almer Shooter"
+        >
+        <figcaption>Fitur utama yang dikembangkan</figcaption>
+    </figure>
+
+</div>
+        </section>
+
+        <section class="section">
+            <div class="section-label">04 / Learning</div>
+            <h2>Hal yang Dipelajari</h2>
+
+            <p class="description">
+                Proyek ini dapat menjadi dokumentasi proses belajar
+                membuat prototipe game 3D, mulai dari implementasi
+                kode hingga pengujian gameplay. Bagian ini dapat
+                dikembangkan dengan menjelaskan kendala yang
+                ditemukan, solusi yang diterapkan, dan keterampilan
+                yang diperoleh selama pengembangan.
+            </p>
+        </section>
+
+        <section class="closing">
+            <div class="section-label">More Projects</div>
+            <h2>Lihat Proyek Lainnya</h2>
+
+            <a href="pizza-rush.html" class="button">
+                Pizza Rush &rarr;
+            </a>
+
+            <a href="warung-bu-inah.html" class="button">
+                Warung Bu inah &rarr;
+            </a>
+
+            <a href="index.html#games" class="button button-primary">
+                Semua Game
+            </a>
+        </section>
+
+    </main>
+
+    <footer>
+        &copy; 2026 Almer Abrilgi Pandu Wahyanto.
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,409 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080D18">
+    <title>Warung Bu inah | Almer Portfolio</title>
+
+    <style>
+        :root {
+            --bg: #080D18;
+            --surface: #0E1625;
+            --border: #263248;
+            --text: #E8EDF7;
+            --muted: #9AA9C1;
+            --accent: #70D6E8;
+            --violet: #A99BFF;
+        }
+
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        .topbar {
+            padding: 17px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            background: #0A111F;
+        }
+
+        .brand {
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--accent);
+        }
+
+        .brand span { color: var(--text); }
+        .topbar small { color: var(--muted); }
+
+        .container {
+            width: min(1000px, 90%);
+            margin: auto;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 30px 0;
+            color: var(--accent);
+        }
+
+        .back-link:hover,
+        .text-link:hover { color: var(--violet); }
+
+        .eyebrow {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: clamp(2.4rem, 6vw, 4rem);
+            line-height: 1.15;
+            margin: 12px 0;
+        }
+
+        h2 { font-size: 1.6rem; margin-top: 0; }
+        h3 { font-size: 1.05rem; margin-top: 0; }
+
+        .subtitle {
+            max-width: 750px;
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 22px 0;
+        }
+
+        .tag {
+            border: 1px solid #2B5265;
+            background: var(--surface);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .cover {
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            margin: 28px 0;
+            background: radial-gradient(ellipse at center, #252C43, #111C2D 55%, #0A111F);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .cover img {
+            width: 100%;
+            max-height: 440px;
+            object-fit: cover;
+            display: block;
+            border-radius: 6px;
+        }
+
+        .placeholder {
+            color: var(--muted);
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
+        }
+
+        .section {
+            padding: 42px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-label {
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .description { color: #C1CDDE; }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .info-card {
+            padding: 22px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 7px;
+        }
+
+        .info-card p,
+        .info-card li { color: var(--muted); }
+
+        .info-card ul { padding-left: 20px; }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 15px;
+        }
+
+        .gallery figure { margin: 0; min-width: 0; }
+
+        .gallery img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .gallery .placeholder {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 12px;
+            background: var(--surface);
+            border: 1px dashed #3B4B64;
+            border-radius: 6px;
+            letter-spacing: 0;
+        }
+
+        figcaption {
+            font-size: 0.82rem;
+            color: var(--muted);
+            margin-top: 8px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 11px 18px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            margin: 5px 8px 5px 0;
+            transition: 0.2s;
+        }
+
+        .button-primary {
+            color: #08131F;
+            background: var(--accent);
+            border-color: var(--accent);
+            font-weight: 700;
+        }
+
+        .button:hover { border-color: var(--accent); }
+
+        .closing {
+            margin: 40px 0;
+            padding: 25px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 7px;
+        }
+
+        footer {
+            padding: 24px;
+            color: #77869E;
+            text-align: center;
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 650px) {
+            .info-grid, .gallery { grid-template-columns: 1fr; }
+            .gallery img, .gallery .placeholder { height: 210px; }
+            .cover { min-height: 220px; }
+            .topbar small { font-size: 0.7rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="topbar">
+        <a href="index.html" class="brand">A<span>.</span></a>
+        <small>GAME DEVELOPMENT PORTFOLIO</small>
+    </nav>
+
+    <main class="container">
+
+        <a href="index.html#games" class="back-link">
+            &larr; Kembali ke My Games
+        </a>
+
+        <header>
+            <div class="eyebrow">3D Horror Game Prototype</div>
+            <h1>Warung Bu inah</h1>
+
+            <p class="subtitle">
+                Prototipe game horor 3D berlatar warung makan,
+                menggabungkan aktivitas sehari-hari, interaksi
+                lingkungan, dan suasana horor.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Unity</span>
+                <span class="tag">3D</span>
+                <span class="tag">Horror</span>
+                <span class="tag">Work in Progress</span>
+            </div>
+        </header>
+
+        <div class="project-art">
+            <img src="logo warung bu inah new.png"
+            alt="Warung Bu Inah">
+        </div>
+
+        <section class="section">
+            <div class="section-label">01 / Overview</div>
+            <h2>Tentang Game</h2>
+
+            <p class="description">
+                Warung Indomie merupakan prototipe game horor 3D
+                yang mengambil latar sebuah warung makan. Konsepnya
+                memadukan aktivitas seperti berinteraksi dengan objek
+                dan menjalankan tugas dengan suasana lingkungan yang
+                perlahan membangun ketegangan.
+            </p>
+
+            <p class="description">
+                Proyek ini mengeksplorasi cara menghubungkan aktivitas
+                gameplay, penyajian cerita, dan elemen lingkungan
+                menjadi pengalaman bermain yang saling mendukung.
+                Proyek masih dalam tahap pengembangan prototipe.
+            </p>
+        </section>
+
+        <section class="section">
+            <div class="section-label">02 / My Contribution</div>
+            <h2>Kontribusi Pengembangan</h2>
+
+            <div class="info-grid">
+                <article class="info-card">
+                    <h3>Peran</h3>
+                    <p>
+                        Kontribusi pemrograman gameplay dan
+                        pengembangan elemen pendukung permainan.
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <h3>Teknologi</h3>
+                    <p>Unity dan C#.</p>
+                </article>
+
+                <article class="info-card">
+                    <h3>Fitur yang Dikerjakan</h3>
+                    <ul>
+                        <li>Sistem lalu lintas kendaraan.</li>
+                        <li>Interaksi tabrakan dengan kendaraan.</li>
+                        <li>Mekanisme pengumpulan sesajen.</li>
+                        <li>Pengaturan layout UI/UX dan crosshair.</li>
+                        <li>Prolog, dialog, dan kamera Bu Inah.</li>
+                        <li>Menu utama dan pemutaran video.</li>
+                        <li>Membuat sistem pemutaran cutscene comic.</li>
+                        <li>Membuat sistem variasi pesanan mie.</li>
+                        <li>Membuat mekanik dan interaksi saat pelanggan menerima pesanan yang benar dan salah.</li>
+                        <li>Membetulkan bug melayani.</li>
+                    </ul>
+                </article>
+
+                <article class="info-card">
+                    <h3>Fokus Pengembangan</h3>
+                    <p>
+                        Menghubungkan sistem gameplay dan antarmuka
+                        agar pengalaman bermain, penyajian cerita,
+                        serta interaksi lingkungan dapat berjalan
+                        sebagai satu kesatuan.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-label">03 / Screenshots</div>
+            <h2>Galeri Gameplay</h2>
+
+            <div class="gallery">
+                <figure>
+                    <img src="lingkungan.png"
+                    alt="Tampilan Lingkungan Warung"
+                <figcaption>Tampilan Lingkungan</figcaption>
+                </figure>
+
+                 <figure>
+                    <img src="Gameplay-bu-inah.png"
+                    alt="Tampilan Gameplay"
+                <figcaption>Tampilan Gameplay Warung Bu inah</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="UI-Bu-Inah.png"
+                    alt="Tampilan Beberapa UI"
+                <figcaption>Tampilan UI</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-label">04 / Learning</div>
+            <h2>Pengalaman Pengembangan</h2>
+
+            <p class="description">
+                Melalui proyek ini, saya mendapatkan pengalaman
+                dalam mengembangkan elemen gameplay sekaligus
+                memperhatikan bagaimana UI, dialog, kamera,
+                dan lingkungan mendukung pengalaman bermain.
+                Proyek ini juga menjadi latihan mengintegrasikan
+                beberapa sistem dalam satu prototipe game 3D.
+            </p>
+        </section>
+
+        <section class="closing">
+            <div class="section-label">More Projects</div>
+            <h2>Lihat Proyek Lainnya</h2>
+
+            <a href="pizza-rush.html" class="button">
+                Pizza Rush &rarr;
+            </a>
+
+            <a href="almer-shooter.html" class="button">
+                Almer Shooter &rarr;
+            </a>
+
+            <a href="index.html#games" class="button button-primary">
+                Semua Game
+            </a>
+        </section>
+
+    </main>
+
+    <footer>
+        &copy; 2026 Almer Abrilgi Pandu Wahyanto.
+    </footer>
+
+</body>
+</html>

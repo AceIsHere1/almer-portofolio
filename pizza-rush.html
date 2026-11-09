@@ -1,0 +1,404 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080D18">
+    <title>Pizza Rush | Almer Portfolio</title>
+
+    <style>
+        :root {
+            --bg: #080D18;
+            --surface: #0E1625;
+            --card: #111C2D;
+            --border: #263248;
+            --text: #E8EDF7;
+            --muted: #9AA9C1;
+            --accent: #70D6E8;
+            --violet: #A99BFF;
+        }
+
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        .topbar {
+            padding: 17px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            background: #0A111F;
+        }
+
+        .brand {
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--accent);
+        }
+
+        .brand span { color: var(--text); }
+
+        .topbar small { color: var(--muted); }
+
+        .container {
+            width: min(1000px, 90%);
+            margin: auto;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 30px 0;
+            color: var(--accent);
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: clamp(2.4rem, 6vw, 4rem);
+            line-height: 1.15;
+            margin: 12px 0;
+        }
+
+        h2 { font-size: 1.6rem; margin-top: 0; }
+        h3 { font-size: 1.05rem; margin-top: 0; }
+
+        .subtitle {
+            max-width: 750px;
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 22px 0;
+        }
+
+        .tag {
+            border: 1px solid #2B5265;
+            background: var(--surface);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .cover {
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            margin: 28px 0;
+            background: radial-gradient(ellipse at center, #1B3450, #111C2D 55%, #0A111F);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .cover img {
+            width: 100%;
+            height: 300px;
+            max-height: 440px;
+            object-fit: cover;
+            display: block;
+            border-radius: 7px;
+        }   
+
+        .placeholder {
+            color: var(--muted);
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
+        }
+
+        .section {
+            padding: 42px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-label {
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .description { color: #C1CDDE; }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .info-card {
+            padding: 22px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 7px;
+        }
+
+        .info-card p,
+        .info-card li { color: var(--muted); }
+
+        .info-card ul { padding-left: 20px; }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 15px;
+        }
+
+        .gallery figure { margin: 0; min-width: 0; }
+
+        .gallery img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .gallery .placeholder {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 12px;
+            background: var(--surface);
+            border: 1px dashed #3B4B64;
+            border-radius: 6px;
+            letter-spacing: 0;
+        }
+
+        figcaption {
+            font-size: 0.82rem;
+            color: var(--muted);
+            margin-top: 8px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 11px 18px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            margin: 5px 8px 5px 0;
+            transition: 0.2s;
+        }
+
+        .button-primary {
+            color: #08131F;
+            background: var(--accent);
+            border-color: var(--accent);
+            font-weight: 700;
+        }
+
+        .button:hover { border-color: var(--accent); }
+
+        .closing {
+            margin: 40px 0;
+            padding: 25px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 7px;
+        }
+
+        footer {
+            padding: 24px;
+            color: #77869E;
+            text-align: center;
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 650px) {
+            .info-grid, .gallery { grid-template-columns: 1fr; }
+            .gallery img, .gallery .placeholder { height: 210px; }
+            .cover { min-height: 220px; }
+            .topbar small { font-size: 0.7rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="topbar">
+        <a href="index.html" class="brand">A<span>.</span></a>
+        <small>GAME DEVELOPMENT PORTFOLIO</small>
+    </nav>
+
+    <main class="container">
+
+        <a href="index.html#games" class="back-link">
+            &larr; Kembali ke My Games
+        </a>
+
+        <header>
+            <div class="eyebrow">Multiplayer Game Project</div>
+            <h1>Pizza Rush</h1>
+
+            <p class="subtitle">
+                Game pembuatan pizza dengan fokus pada interaksi pemain,
+                pesanan pelanggan, dan sistem multiplayer.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Unity</span>
+                <span class="tag">C#</span>
+                <span class="tag">Netcode</span>
+                <span class="tag">Multiplayer</span>
+            </div>
+        </header>
+
+        <div class="cover">
+            <div class="project-art">
+        <img src="pizza-rush-cover.jpg"
+         alt="Cover game Pizza Rush">
+        </div>
+        </div>
+
+        <section class="section">
+            <div class="section-label">01 / Overview</div>
+            <h2>Tentang Game</h2>
+
+            <p class="description">
+                Pizza Rush adalah proyek game bertema pembuatan dan
+                penyajian pizza. Permainan ini menggabungkan aktivitas
+                gameplay dengan kebutuhan koordinasi antarpemain.
+                Dari sisi teknis, proyek ini menjadi sarana untuk
+                mempelajari penerapan jaringan pada game multiplayer.
+            </p>
+
+            <p class="description">
+                Salah satu fokus pengembangannya adalah menjaga agar
+                interaksi pemain, pesanan pelanggan, dan skor dapat
+                merepresentasikan keadaan permainan secara konsisten
+                pada sesi multiplayer.
+            </p>
+        </section>
+
+        <section class="section">
+            <div class="section-label">02 / My Contribution</div>
+            <h2>Peran dan Kontribusi</h2>
+
+            <div class="info-grid">
+                <article class="info-card">
+                    <h3>Peran</h3>
+                    <p>
+                        Networking Programmer
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <h3>Teknologi</h3>
+                    <p>
+                        Unity, C#, dan Unity Netcode for GameObjects.
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <h3>Sistem yang Dikerjakan</h3>
+                    <ul>
+                        <li>Struktur koneksi dan lobby.</li>
+                        <li>Sinkronisasi pemain dan interaksi gameplay.</li>
+                        <li>Sinkronisasi customer dan order.</li>
+                        <li>Sinkronisasi sistem skor.</li>
+                    </ul>
+                </article>
+
+                <article class="info-card">
+                    <h3>Fokus Teknis</h3>
+                    <p>
+                        Memahami komunikasi server-client serta
+                        menelusuri masalah sinkronisasi pada objek
+                        dan data permainan multiplayer.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+    <div class="section-label">03 / Screenshots</div>
+    <h2>Galeri Gameplay</h2>
+
+    <div class="gallery">
+        <figure>
+            <img src="pizza-rush-gameplay.jpg"
+                 alt="Tampilan utama permainan Pizza Rush">
+            <figcaption>Tampilan utama permainan</figcaption>
+        </figure>
+
+        <figure>
+            <img src="pizza-rush-multiplayer.jpg"
+                 alt="Gameplay multiplayer Pizza Rush">
+            <figcaption>Gameplay multiplayer</figcaption>
+        </figure>
+
+        <figure>
+            <img src="pizza-rush-score.jpg"
+                 alt="Pesanan pelanggan dan skor Pizza Rush">
+            <figcaption>Interaksi pesanan dan skor</figcaption>
+        </figure>
+    </div>
+</section>
+
+        <section class="section">
+            <div class="section-label">04 / Learning</div>
+            <h2>Hal yang Dipelajari</h2>
+
+            <p class="description">
+                Proyek ini membantu saya memahami bahwa pengembangan
+                game multiplayer tidak cukup hanya membuat mekanik
+                berjalan pada satu komputer. Data penting harus
+                dikelola dan disinkronkan dengan tepat agar pemain
+                yang terhubung memperoleh pengalaman bermain yang
+                konsisten.
+            </p>
+        </section>
+
+        <section class="closing">
+            <div class="section-label">More Projects</div>
+            <h2>Lihat Proyek Lainnya</h2>
+
+            <a href="warung-bu-inah.html" class="button">
+                Warung Bu Inah &rarr;
+            </a>
+
+            <a href="almer-shooter.html" class="button">
+                Almer Shooter &rarr;
+            </a>
+
+            <a href="index.html#games" class="button button-primary">
+                Semua Game
+            </a>
+        </section>
+
+    </main>
+
+    <footer>
+        &copy; 2026 Almer Abrilgi Pandu Wahyanto.
+    </footer>
+
+</body>
+</html>
